@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Operational security</title>
+		<link rel="stylesheet" type="text/css" href="build/build.css">
+	</head>
+	<body>
+		<article class="deck">
+			<section>
+				<h1>Operational security</h1>
+			</section>
+			<section>
+				<h2>AJ</h2>
+				<h3>he/him</h3>
+				<h3>Winter 2 batch</h3>
+				<h3>Security/privacy nerd</h3>
+			</section>
+			<section data-bespoke-hash="covering">
+				<h2>What we're covering</h2>
+				<h3>tl;dr: security-related production environment best practices</h3>
+				<ul>
+					<li>General stuff</li>
+					<li>Secure software sources</li>
+					<li>Source installation management</li>
+					<li>Logs</li>
+				</ul>
+			</section>
+			<section data-bespoke-hash="not-covering">
+				<h2>What we're <strong>not</strong> covering</h2>
+				<ul>
+					<li><a href="https://strugee.net/presentation-security-design/">System-level stuff</a></li>
+					<li><a href="https://strugee.net/presentation-webapp-security/">Webapp stuff</a></li>
+					<li>General operational skills</li>
+					<li>Cryptography</li>
+					<li>Deploying HTTPS</li>
+				</ul>
+			</section>
+			<section>
+				<h2>General stuff</h2>
+				<h3>Conservative service management</h3>
+				<h3>Rigorous structure (Puppet/Ansible/Chef/etc. - etckeeper is super easy)</h3>
+				<h3>Use automatic software upgrades (<code>unattended-upgrades</code> + <code>needsrestart</code> packages in Debian and Debian derivatives)</h3>
+				<h3>Encrypt data in motion</h3>
+			</section>
+			<section>
+				<h2>General stuff II</h2>
+				<h3>Use <code>sudo</code>, not the root account</h3>
+				<h3>Disallow all (direct) logins to root</h3>
+				<h3>Document setups</h3>
+				<h3>Do all of these things <em>now</em></h3>
+			</section>
+			<section>
+				<h2>Secure software sources</h2>
+				<h3>Prefer software from official distribution repositories</h3>
+				<h3>It's more trustworthy and has stronger authentication/integrity guarantees</h3>
+				<h3>Don't install unpackaged software (except your application)</h3>
+				<h3>Too hard to manage (esp. for upgrades)</h3>
+			</section>
+			<section>
+				<h2>Source installation management</h2>
+				<h3>Minimal permissions (don't use sledgehammers like <code>sudo chmod -R 777 .</code>)</h3>
+				<h3>Don't allow the app to write to itself</h3>
+				<h3>Give write access to logs, temporary files, and state</h3>
+			</section>
+			<section>
+				<h2>Logs</h2>
+				<h3>Restrict logfile permissions</h3>
+				<h3>Don't let your app tamper with logs (use syslog, systemd-journald)</h3>
+				<h3>Delete your logs</h3>
+				<h3>Otherwise you're handing free data to attackers</h3>
+			</section>
+			<section>
+				<h2>Thanks!</h2>
+				<h3>Questions</h3>
+				<h3>Vote on whether we'll cover HTTPS or cryptography next week</h3>
+			</section>
+			<section>
+				<h2 class="bullet">Access this presentation again</h2>
+				<h3 class="bullet"><a href="https://strugee.net/presentation-operational-security">https://strugee.net/presentation-operational-security</a></h3>
+				<h3 class="bullet">Or get the <a href="https://github.com/strugee/presentation-operational-security">source code</a></h3>
+			</section>
+		</article>
+		<script src="build/build.js"></script>
+	</body>
+</html>
