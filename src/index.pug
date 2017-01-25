@@ -14,4 +14,77 @@ html
 			section
 				h1 Operational security
 
+			section
+				h2 AJ
+				h3 he/him
+				h3 Winter 2 batch
+				h3 Security/privacy nerd
+
+			section(data-bespoke-hash='covering')
+				h2 What we're covering
+				h3 tl;dr: security-related production environment best practices
+				ul
+					li General stuff
+					li Secure software sources
+					li Source installation management
+					li Logs
+
+			section(data-bespoke-hash='not-covering')
+				h2 What we're <strong>not</strong> covering
+				ul
+					li
+						a(href='https://strugee.net/presentation-security-design/') System-level stuff
+					li
+						a(href='https://strugee.net/presentation-webapp-security/') Webapp stuff
+					li General operational skills
+					li Cryptography
+					li Deploying HTTPS
+
+			section
+				h2 General stuff
+				h3 Conservative service management
+				h3 Rigorous structure (Puppet/Ansible/Chef/etc. - etckeeper is super easy)
+				h3 Use automatic software upgrades (<code>unattended-upgrades</code> + <code>needsrestart</code> packages in Debian and Debian derivatives)
+				h3 Encrypt data in motion
+
+			section
+				h2 General stuff II
+				h3 Use <code>sudo</code>, not the root account
+				h3 Disallow all (direct) logins to root
+				h3 Document setups
+				h3 Do all of these things <em>now</em>
+
+			section
+				h2 Secure software sources
+				h3 Prefer software from official distribution repositories
+				h3 It's more trustworthy and has stronger authentication/integrity guarantees
+				h3 Don't install unpackaged software (except your application)
+				h3 Too hard to manage (esp. for upgrades)
+
+			section
+				h2 Source installation management
+				h3 Minimal permissions (don't use sledgehammers like <code>sudo chmod -R 777 .</code>)
+				h3 Don't allow the app to write to itself
+				h3 Give write access to logs, temporary files, and state
+
+			section
+				h2 Logs
+				h3 Restrict logfile permissions
+				h3 Don't let your app tamper with logs (use syslog, systemd-journald)
+				h3 Delete your logs
+				h3 Otherwise you're handing free data to attackers
+
+			section
+				h2 Thanks!
+				h3 Questions
+				h3 Vote on whether we'll cover HTTPS or cryptography next week
+
+			section
+				h2.bullet Access this presentation again
+				h3.bullet
+					a(href='https://strugee.net/presentation-operational-security') https://strugee.net/presentation-operational-security
+				h3.bullet Or get the 
+					a(href='https://github.com/strugee/presentation-operational-security') source code
+
+
 		script(src='build/build.js')
